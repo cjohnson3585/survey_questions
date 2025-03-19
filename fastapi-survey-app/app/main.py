@@ -23,7 +23,7 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 TIMEOUT_DURATION = 60
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
-PATH_TO_CREDS = '/Users/christopherjohnson/Desktop/Github_repos/survey_questions/fastapi-survey-app/credentials/'
+PATH_TO_CREDS = '/path/to/credentials/credentials/'
 CLIENT_SECRET_FILE = PATH_TO_CREDS +'credentials.json'
  
 def get_credentials():
@@ -46,8 +46,8 @@ def send_email(question1, question2, question3, email):
     service = build('gmail', 'v1', credentials=creds)
 
     message = MIMEText(f"Survey Responses:\n1. {question1}\n2. {question2}\n3. {question3}\nEmail: {email}")
-    message['to'] = 'cbj3585@gmail.com'
-    message['from'] = 'cbj3585@gmail.com'
+    message['to'] = 'abc123@gmail.com'
+    message['from'] = 'abc123@gmail.com'
     message['subject'] = 'Survey Responses'
 
     raw = base64.urlsafe_b64encode(message.as_bytes()).decode()
